@@ -147,8 +147,8 @@ class Brixel_Ninja_Forms_Dashboard_Widget_Admin {
 		$my_query = new WP_Query($args);
 		if( $my_query->have_posts() ) {
 		  echo 'List of Submissions';
-		  while ($my_query->have_posts()) : $my_query->the_post(); ?>_
-		    <p><?php the_content(); ?></p>
+		  while ($my_query->have_posts()) : $my_query->the_post(); ?>
+		    <p><?php print_r($my_query); ?></p>
 		    <?php
 		  endwhile;
 		}
