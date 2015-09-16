@@ -109,14 +109,14 @@ class Brixel_Ninja_Forms_Dashboard_Widget_Admin {
 
 		wp_add_dashboard_widget(
 			'Brixel Ninja forms dashboard widget',
-			__( 'Site Info', 'brixel_ninja_forms_dashboard_widget' ),
+			__( 'Meme Kitchen Reservations', 'brixel_ninja_forms_dashboard_widget' ),
 			array( $this, 'render_dashboard_widget' )
 		);
 
 	}
 
 	public function render_dashboard_widget() {
-
+		/*
 		$info = array(
 			__( 'Site Name',          'brixel_ninja_forms_dashboard_widget') => get_bloginfo( 'name' ),
 			__( 'Site Tagline',       'brixel_ninja_forms_dashboard_widget') => get_bloginfo( 'description' ),
@@ -134,6 +134,9 @@ class Brixel_Ninja_Forms_Dashboard_Widget_Admin {
 			echo '<tr><td><strong>' . $key . ' :</strong></td><td>' . $value . '</td></tr>';
 		}
 		echo '</table>';
+		*/
+
+		echo "bonkers";
 
 	}
 }
