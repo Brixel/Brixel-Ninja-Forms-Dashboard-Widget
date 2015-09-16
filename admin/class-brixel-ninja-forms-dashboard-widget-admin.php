@@ -136,7 +136,6 @@ class Brixel_Ninja_Forms_Dashboard_Widget_Admin {
 		echo '</table>';
 		*/
 
-		echo "bonkers2";
 		$custom_post_type = 'nf_sub';
 		$args=array(
 		  'post_type' => $custom_post_type,
@@ -148,8 +147,8 @@ class Brixel_Ninja_Forms_Dashboard_Widget_Admin {
 		$my_query = new WP_Query($args);
 		if( $my_query->have_posts() ) {
 		  echo 'List of Submissions';
-		  while ($my_query->have_posts()) : $my_query->the_post(); ?>
-		    <p><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
+		  while ($my_query->have_posts()) : $my_query->the_post(); ?>_
+		    <p><?php the_content(); ?></p>
 		    <?php
 		  endwhile;
 		}
