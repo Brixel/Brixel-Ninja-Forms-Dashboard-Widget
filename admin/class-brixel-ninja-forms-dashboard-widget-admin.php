@@ -136,23 +136,43 @@ class Brixel_Ninja_Forms_Dashboard_Widget_Admin {
 		echo '</table>';
 		*/
 
-		$custom_post_type = 'nf_sub';
-		$args=array(
-		  'post_type' => $custom_post_type,
-		  'post_status' => 'publish',
-		  'posts_per_page' => -1,
-		  'caller_get_posts'=> 1
+		//$custom_post_type = 'nf_sub';
+		//$args=array(
+		//  'post_type' => $custom_post_type,
+		//  'post_status' => 'publish',
+		//  'posts_per_page' => -1,
+		//  'caller_get_posts'=> 1
+		//);
+		//$my_query = null;
+		//$my_query = new WP_Query($args);
+		//if( $my_query->have_posts() ) {
+		//  echo 'List of Submissions';
+		//  while ($my_query->have_posts()) : $my_query->the_post();
+		//   echo <p>print_r($my_query);</p>
+		//    
+		//  endwhile;
+		//}
+		//wp_reset_query();  // Restore global post data stomped by the_post().
+		$form_id = 6;
+		$args = array(
+  			'form_id'   => $form_id,
+			//'user_id'   => $user_id,
+ 			'fields'    => array(
+    				//'34'      => 'checked',
+    				//'54'      => 'Hello World',
+  			),
 		);
-		$my_query = null;
-		$my_query = new WP_Query($args);
-		if( $my_query->have_posts() ) {
-		  echo 'List of Submissions';
-		  while ($my_query->have_posts()) : $my_query->the_post(); ?>
-		    <p><?php print_r($my_query); ?></p>
-		    <?php
-		  endwhile;
+		// This will return an array of sub objects.
+		$subs = Ninja_Forms()->subs()->get( $args );
+		// This is a basic example of how to interact with the returned objects.
+		// See other documentation for all the methods and properties of the submission object.
+		foreach ( $subs as $sub ) {
+  			$form_id = $sub->form_id;
+  			$user_id = $sub->user_id;
+  			// Returns an array of [field_id] => [user_value] pairs
+  			$all_fields = $sub->get_all_fields();
+ 	 		// Echoes out the submitted value for a field
+  			echo $sub->get_field( 34 );
 		}
-		wp_reset_query();  // Restore global post data stomped by the_post().
-
 	}
 }
